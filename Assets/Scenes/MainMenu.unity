@@ -271,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &318436163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -602,6 +602,7 @@ MonoBehaviour:
   mainMenu: {fileID: 318436162}
   levelSelector: {fileID: 1105945972}
   optionsMenu: {fileID: 331107187}
+  pauseMenu: {fileID: 0}
 --- !u!4 &520968154
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,7 +1429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1105945973
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
@@ -11,6 +12,63 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] GameObject levelSelector;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject pauseMenu;
+
+    private bool isPaused= false;
+
+    private InputMapping controls;
+
+    private void Awake()
+    {
+        controls = new InputMapping();
+    }
+
+    private void OnEnable()
+    {
+        controls.Gameplay.Enable();
+        controls.Gameplay.Pause.started += OnMenuClicked;
+    }
+
+    private void OnDisable()
+    {
+
+        controls.Gameplay.Pause.started -= OnMenuClicked;
+
+    }
+
+
+
+    private void OnMenuClicked(InputAction.CallbackContext context)
+    {
+        if (isPaused) 
+        { 
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+
+
+    }
+
+    public void Pause()
+    {
+
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1.0f;
+        isPaused = false;
+    }
+
+
+
     public void PlayButton()
     {
         mainMenu.SetActive(false);
