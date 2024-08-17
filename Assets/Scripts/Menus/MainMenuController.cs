@@ -10,6 +10,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject levelSelector;
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject pauseMenu;
     public void PlayButton()
     {
         mainMenu.SetActive(false);
