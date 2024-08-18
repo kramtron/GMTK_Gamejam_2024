@@ -357,6 +357,8 @@ MonoBehaviour:
   grabbableMask:
     serializedVersion: 2
     m_Bits: 64
+  hitCollider: {fileID: 5797659322394645257}
+  currentState: 0
   stretchSpeed: 50
   moveSpeed: 50
 --- !u!61 &1472824637258456006
@@ -473,6 +475,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d07602f8c5f6a44fab35a24eb6a40fb, type: 3}
+--- !u!1 &5797659322394645257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8002710879914806745, guid: 1d07602f8c5f6a44fab35a24eb6a40fb, type: 3}
+  m_PrefabInstance: {fileID: 4574033563202707152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7850858404835029061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6019590133211049621, guid: 1d07602f8c5f6a44fab35a24eb6a40fb, type: 3}

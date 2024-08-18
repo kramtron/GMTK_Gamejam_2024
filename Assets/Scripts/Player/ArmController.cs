@@ -18,10 +18,11 @@ public class ArmController : MonoBehaviour
 {
 
     [SerializeField] LayerMask grabbableMask;
+    [SerializeField] GameObject hitCollider;
+    [HideInInspector] public ArmState currentState = ArmState.Idle;
     private InputMapping controls;
     private Transform playerTransform;
     private Transform handsTransform;
-    [HideInInspector] public ArmState currentState = ArmState.Idle;
 
 
     public float stretchSpeed = 5f;
@@ -59,6 +60,7 @@ public class ArmController : MonoBehaviour
         originalPosition = transform.parent.localPosition;
         playerTransform = transform.parent.parent;
         handsTransform = transform.parent;
+        hitCollider.SetActive(false);
     }
 
     void Update()
@@ -117,6 +119,7 @@ public class ArmController : MonoBehaviour
     private void MovePlayerTowardsTarget()
     {
         playerTransform.position = Vector3.MoveTowards(playerTransform.position, targetPosition, moveSpeed * Time.deltaTime);
+        hitCollider.SetActive(true);
 
         MaintainArms();
     }
@@ -170,6 +173,7 @@ public class ArmController : MonoBehaviour
         handsTransform.localScale = originalScale;
         handsTransform.localPosition = Vector3.zero;
         handsTransform.localRotation = Quaternion.identity;
+        hitCollider.SetActive(false);
     }
 
     private void MaintainArms()
