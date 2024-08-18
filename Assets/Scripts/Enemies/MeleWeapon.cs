@@ -16,11 +16,15 @@ public class MeleWeapon : MonoBehaviour
         if (Time.time >= nextAttackTime && isActive && canAttack)
         {
 
-            //Hacer daño al jugador con funcion OnHit.
-            Debug.Log("Atacaaaaaad");
+            //Hacer daño al jugador con funcion OnHit.ç
+            if (player != null) {
+                player.GetComponentInParent<PlayerDeath>().Kill();
+                //player = null;
+            }
+            //Debug.Log("Atacaaaaaad");
+            
             // Actualiza el tiempo en el que se puede realizar el siguiente disparo
             nextAttackTime = Time.time + 1f / attackSpeed;
-
         }
     }
 
@@ -30,7 +34,6 @@ public class MeleWeapon : MonoBehaviour
         {
             canAttack = true;
             player = collision.gameObject;
-            
 
         }
         
