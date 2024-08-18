@@ -2,21 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
+
+public enum ArmState
+{
+    Idle,
+    Stretching,
+    GapClosing,
+    Waiting
+}
 
 public class ArmController : MonoBehaviour
 {
-    [SerializeField] LayerMask grabbableMask;
-    public float stretchSpeed = 5f;
-    public float moveSpeed = 10f;
-    private Vector3 originalScale;
-    private Vector3 originalPosition;
-    private bool isStretching = false;
-    private bool isMoving = false;
-    private bool alreadyColliding = false;
-    private Vector3 targetPosition;
 
+    [SerializeField] LayerMask grabbableMask;
     private InputMapping controls;
     private Transform playerTransform;
+    private Transform handsTransform;
+    [HideInInspector] public ArmState currentState = ArmState.Idle;
+
+
+    public float stretchSpeed = 5f;
+    public float moveSpeed = 10f;
+    private bool alreadyColliding = false;
+
+
+    private Vector3 gapClosePosition;
+    private Vector3 gapCloseScale;
+    private Vector3 originalScale;
+    private Vector3 originalPosition;
+    private Vector3 targetPosition;
 
     void Awake()
     {
@@ -27,6 +44,7 @@ public class ArmController : MonoBehaviour
     {
         controls.Player.StretchArm.started += ctx => StartStretching();
         controls.Player.StretchArm.canceled += ctx => StopStretching();
+        controls.Player.Launch.started += ctx => LaunchTowardsTarget();
         controls.Enable();
     }
 
@@ -40,21 +58,27 @@ public class ArmController : MonoBehaviour
         originalScale = transform.parent.localScale;
         originalPosition = transform.parent.localPosition;
         playerTransform = transform.parent.parent;
+        handsTransform = transform.parent;
     }
 
     void Update()
     {
-        if (isStretching)
+        switch(currentState)
         {
-            StretchArm();
-        }
-        else if (isMoving)
-        {
-            MovePlayerTowardsTarget();
-        }
-        else
-        {
-            ResetArm();
+            case ArmState.Idle:
+                ResetArm();
+                break;
+            case ArmState.Stretching:
+                StretchArm();
+                break; 
+
+            case ArmState.GapClosing:
+                MovePlayerTowardsTarget();
+                break;
+                
+            case ArmState.Waiting:
+                StickToWall();
+                break;
         }
     }
 
@@ -62,52 +86,66 @@ public class ArmController : MonoBehaviour
     {
         if (!alreadyColliding)
         {
-            isStretching = true;
-            originalPosition = transform.parent.localPosition;
+            currentState = ArmState.Stretching;
         }
     }
 
     void StopStretching()
     {
-        isStretching = false;
+        if (currentState != ArmState.GapClosing)
+        {
+            currentState = ArmState.Idle;
+        }
+        else
+        {
+            currentState = ArmState.Waiting;
+        }
+    }
+    void LaunchTowardsTarget()
+    {
+        if (currentState == ArmState.Waiting)
+        {
+            currentState = ArmState.GapClosing;
+        }
     }
 
     private void StretchArm()
     {
-        transform.parent.localScale += new Vector3(stretchSpeed * Time.deltaTime, 0, 0);
+        handsTransform.localScale += new Vector3(stretchSpeed * Time.deltaTime, 0, 0);
     }
 
     private void MovePlayerTowardsTarget()
     {
         playerTransform.position = Vector3.MoveTowards(playerTransform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-        float distance = Vector3.Distance(playerTransform.position, targetPosition);
-        float scaleFactor = distance / Vector3.Distance(originalPosition, targetPosition);
+        MaintainArms();
+    }
 
-        transform.parent.localScale = new Vector3(originalScale.x * scaleFactor, originalScale.y, originalScale.z);
+    private void StickToWall()
+    {
+        Vector3 dir = (targetPosition - playerTransform.position).normalized;
+        dir.z = 0f;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (distance < 0.2f)
-        {
-            isMoving = false;
-            ResetArm();
-        }
+        handsTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        MaintainArms();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isStretching && ((1 << collision.gameObject.layer) & grabbableMask) != 0)
+        if (currentState == ArmState.Stretching && ((1 << collision.gameObject.layer) & grabbableMask) != 0)
         {
-            Debug.Log("Collision...");
             RaycastHit2D hit = Physics2D.Raycast(playerTransform.position, playerTransform.gameObject.GetComponent<PlayerAim>().aimDirection, 1000f, grabbableMask);
-            Debug.Log("Direction: " + playerTransform.gameObject.GetComponent<PlayerAim>().aimDirection);
-            Debug.Log("Target: " + hit.point);
 
             if (hit.collider != null)
             {
-                Debug.Log("Grabbing...");
                 StopStretching();
                 targetPosition = hit.point;
-                isMoving = true;
+                gapClosePosition = handsTransform.position;
+                gapCloseScale = handsTransform.localScale;
+                originalPosition = playerTransform.localPosition;
+                currentState = ArmState.Waiting;
             }
         }
     }
@@ -129,6 +167,22 @@ public class ArmController : MonoBehaviour
     }
     public void ResetArm()
     {
-        transform.parent.localScale = originalScale;
+        handsTransform.localScale = originalScale;
+        handsTransform.localPosition = Vector3.zero;
+        handsTransform.localRotation = Quaternion.identity;
+    }
+
+    private void MaintainArms()
+    {
+        float distance = Vector3.Distance(playerTransform.position, targetPosition);
+        float scaleFactor = distance / Vector3.Distance(originalPosition, targetPosition);
+
+        handsTransform.localScale = new Vector3(gapCloseScale.x * scaleFactor, gapCloseScale.y, gapCloseScale.z);
+
+        if (distance < 0.1f)
+        {
+            currentState = ArmState.Idle;
+            ResetArm();
+        }
     }
 }

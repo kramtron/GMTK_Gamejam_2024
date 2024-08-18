@@ -8,6 +8,7 @@ public class PlayerAim : MonoBehaviour
     private Vector2 aimInput;
     [HideInInspector] public Vector3 aimDirection;
     private InputMapping controls;
+    private ArmController armController;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class PlayerAim : MonoBehaviour
     {
         controls.Player.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Enable();
+        armController = gameObject.GetComponentInChildren<ArmController>();
     }
 
     void OnDisable()
@@ -27,7 +29,10 @@ public class PlayerAim : MonoBehaviour
 
     void Update()
     {
-        Aim();
+        if (armController.currentState != ArmState.Waiting)
+        {
+            Aim();
+        }
     }
 
     void Aim()

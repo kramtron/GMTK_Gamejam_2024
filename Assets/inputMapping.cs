@@ -94,7 +94,7 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""GapClose"",
+                    ""name"": ""Launch"",
                     ""type"": ""Button"",
                     ""id"": ""fe4e7f81-80e3-4560-a4aa-9b7aa68c8fed"",
                     ""expectedControlType"": ""Button"",
@@ -265,7 +265,7 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""GapClose"",
+                    ""action"": ""Launch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -282,7 +282,7 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_StretchArm = m_Player.FindAction("StretchArm", throwIfNotFound: true);
-        m_Player_GapClose = m_Player.FindAction("GapClose", throwIfNotFound: true);
+        m_Player_Launch = m_Player.FindAction("Launch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -393,7 +393,7 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_StretchArm;
-    private readonly InputAction m_Player_GapClose;
+    private readonly InputAction m_Player_Launch;
     public struct PlayerActions
     {
         private @InputMapping m_Wrapper;
@@ -401,7 +401,7 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @StretchArm => m_Wrapper.m_Player_StretchArm;
-        public InputAction @GapClose => m_Wrapper.m_Player_GapClose;
+        public InputAction @Launch => m_Wrapper.m_Player_Launch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -420,9 +420,9 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
             @StretchArm.started += instance.OnStretchArm;
             @StretchArm.performed += instance.OnStretchArm;
             @StretchArm.canceled += instance.OnStretchArm;
-            @GapClose.started += instance.OnGapClose;
-            @GapClose.performed += instance.OnGapClose;
-            @GapClose.canceled += instance.OnGapClose;
+            @Launch.started += instance.OnLaunch;
+            @Launch.performed += instance.OnLaunch;
+            @Launch.canceled += instance.OnLaunch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -436,9 +436,9 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
             @StretchArm.started -= instance.OnStretchArm;
             @StretchArm.performed -= instance.OnStretchArm;
             @StretchArm.canceled -= instance.OnStretchArm;
-            @GapClose.started -= instance.OnGapClose;
-            @GapClose.performed -= instance.OnGapClose;
-            @GapClose.canceled -= instance.OnGapClose;
+            @Launch.started -= instance.OnLaunch;
+            @Launch.performed -= instance.OnLaunch;
+            @Launch.canceled -= instance.OnLaunch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -465,6 +465,6 @@ public partial class @InputMapping: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnStretchArm(InputAction.CallbackContext context);
-        void OnGapClose(InputAction.CallbackContext context);
+        void OnLaunch(InputAction.CallbackContext context);
     }
 }
