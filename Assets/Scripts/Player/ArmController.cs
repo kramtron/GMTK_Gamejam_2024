@@ -12,6 +12,7 @@ public class ArmController : MonoBehaviour
     private Vector3 originalPosition;
     private bool isStretching = false;
     private bool isMoving = false;
+    private bool alreadyColliding = false;
     private Vector3 targetPosition;
 
     private InputMapping controls;
@@ -59,8 +60,11 @@ public class ArmController : MonoBehaviour
 
     void StartStretching()
     {
-        isStretching = true;
-        originalPosition = transform.parent.localPosition;
+        if (!alreadyColliding)
+        {
+            isStretching = true;
+            originalPosition = transform.parent.localPosition;
+        }
     }
 
     void StopStretching()
@@ -105,6 +109,22 @@ public class ArmController : MonoBehaviour
                 targetPosition = hit.point;
                 isMoving = true;
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & grabbableMask) != 0)
+        {
+            alreadyColliding = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & grabbableMask) != 0)
+        {
+            alreadyColliding = false;
         }
     }
     public void ResetArm()
