@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -10,6 +11,11 @@ public class Weapon : MonoBehaviour
 
     public bool isActive = false; // Estado del arma
     private float nextAttackTime = 0f; // Tiempo en el que se puede realizar el siguiente disparo
+
+    [SerializeField] AudioSource shootSound;
+
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject particles;
 
     private void Start()
     {
@@ -49,6 +55,9 @@ public class Weapon : MonoBehaviour
 
         // Instancia el proyectil en la posición del punto de disparo
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+        shootSound.Play();
+        StartCoroutine(particlesController());
+        animator.SetBool("Shooting", true);
 
         // Añade una fuerza al proyectil para que se mueva
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
@@ -60,6 +69,17 @@ public class Weapon : MonoBehaviour
         {
             Debug.LogWarning("Projectile does not have a Rigidbody2D component.");
         }
+    }
+
+    private IEnumerator particlesController()
+    {
+        particles.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        particles.SetActive(false);
+        animator.SetBool("Shooting", false);
+
+
+        yield break;
     }
 }
 

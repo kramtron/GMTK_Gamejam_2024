@@ -6,11 +6,27 @@ public class BloodController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] float timeToDestroy = 0.5f;
-    [SerializeField] AudioSource sound;
+    
+    [SerializeField] List<AudioSource> sounds;
     void Start()
     {
-        sound.Play();
+        if (sounds != null) 
+        { 
+
+        sounds[Random.Range(0, sounds.Count)].Play();
+
+        }
+
+        else
+        {
+
+            Debug.Log("Enemy sound error");
+
+        }
+
+
         Destroy(gameObject,timeToDestroy);
+
     }
 
     
