@@ -94,8 +94,9 @@ public class ArmController : MonoBehaviour
         if (isStretching && ((1 << collision.gameObject.layer) & grabbableMask) != 0)
         {
             Debug.Log("Collision...");
-            RaycastHit2D hit = Physics2D.Raycast(playerTransform.position, playerTransform.gameObject.GetComponent<PlayerAim>().aimInput, 100f, grabbableMask);
-            Debug.Log(hit.point);
+            RaycastHit2D hit = Physics2D.Raycast(playerTransform.position, playerTransform.gameObject.GetComponent<PlayerAim>().aimDirection, 1000f, grabbableMask);
+            Debug.Log("Direction: " + playerTransform.gameObject.GetComponent<PlayerAim>().aimDirection);
+            Debug.Log("Target: " + hit.point);
 
             if (hit.collider != null)
             {

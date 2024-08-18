@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerAim : MonoBehaviour
 {
-    [HideInInspector] public Vector2 aimInput;
+    private Vector2 aimInput;
+    [HideInInspector] public Vector3 aimDirection;
     private InputMapping controls;
 
     void Awake()
@@ -31,8 +32,6 @@ public class PlayerAim : MonoBehaviour
 
     void Aim()
     {
-        Vector3 aimDirection;
-
         if (Gamepad.current != null && aimInput.magnitude > 0.1f)
         {
             // Gamepad
