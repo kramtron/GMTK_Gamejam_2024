@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAim : MonoBehaviour
 {
-    private Camera mainCamera;
-    private Vector2 aimInput;
+    [HideInInspector] public Vector2 aimInput;
     private InputMapping controls;
 
     void Awake()
@@ -23,11 +22,6 @@ public class PlayerAim : MonoBehaviour
     void OnDisable()
     {
         controls.Disable();
-    }
-
-    void Start()
-    {
-        mainCamera = Camera.main;
     }
 
     void Update()
@@ -47,7 +41,7 @@ public class PlayerAim : MonoBehaviour
         else
         {
             // Mouse
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(aimInput);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(aimInput);
             aimDirection = mousePosition - transform.position;
             aimDirection.z = 0f;
         }

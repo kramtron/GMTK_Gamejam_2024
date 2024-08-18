@@ -338,6 +338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa94d6864ccc9146acb6a166659ada0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbableMask:
+    serializedVersion: 2
+    m_Bits: 64
   stretchSpeed: 50
   moveSpeed: 50
 --- !u!61 &1472824637258456006
@@ -383,5 +386,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34, y: 0.34}
+  m_Size: {x: 0.34, y: 0.04}
   m_EdgeRadius: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ArmController : MonoBehaviour
 {
+    [SerializeField] LayerMask grabbableMask;
     public float stretchSpeed = 5f;
     public float moveSpeed = 10f;
     private Vector3 originalScale;
@@ -46,10 +47,13 @@ public class ArmController : MonoBehaviour
         {
             StretchArm();
         }
-
-        if (isMoving)
+        else if (isMoving)
         {
             MovePlayerTowardsTarget();
+        }
+        else
+        {
+            ResetArm();
         }
     }
 
@@ -76,7 +80,7 @@ public class ArmController : MonoBehaviour
         float distance = Vector3.Distance(playerTransform.position, targetPosition);
         float scaleFactor = distance / Vector3.Distance(originalPosition, targetPosition);
 
-        transform.localScale = new Vector3(originalScale.x * scaleFactor, originalScale.y, originalScale.z);
+        transform.parent.localScale = new Vector3(originalScale.x * scaleFactor, originalScale.y, originalScale.z);
 
         if (distance < 0.2f)
         {
@@ -87,15 +91,21 @@ public class ArmController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isStretching && ((1 << collision.gameObject.layer) & LayerMask.GetMask("Grabbable")) != 0)
+        if (isStretching && ((1 << collision.gameObject.layer) & grabbableMask) != 0)
         {
-            StopStretching();
-            targetPosition = transform.position;
-            isMoving = true;
+            Debug.Log("Collision...");
+            RaycastHit2D hit = Physics2D.Raycast(playerTransform.position, playerTransform.gameObject.GetComponent<PlayerAim>().aimInput, 100f, grabbableMask);
+            Debug.Log(hit.point);
+
+            if (hit.collider != null)
+            {
+                Debug.Log("Grabbing...");
+                StopStretching();
+                targetPosition = hit.point;
+                isMoving = true;
+            }
         }
     }
-
-
     public void ResetArm()
     {
         transform.parent.localScale = originalScale;
