@@ -13,7 +13,7 @@ public class MeleWeapon : MonoBehaviour
     private GameObject player;
     private void Update()
     {
-        if (Time.time >= nextAttackTime && canAttack)
+        if (Time.time >= nextAttackTime && isActive && canAttack)
         {
 
             //Hacer daño al jugador con funcion OnHit.
@@ -35,11 +35,11 @@ public class MeleWeapon : MonoBehaviour
         }
         
     }
-    private void OnCollisionExit2D(Collision2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            canAttack = false;
-        }
+
+        canAttack = false;
+
     }
 }

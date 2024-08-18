@@ -129,7 +129,7 @@ public class BasicEnemy : MonoBehaviour
 
                     if (!isMelee)
                     {
-                        weapon.GetComponent<Weapon>().isActive = false; // Activa el arma
+                        weapon.GetComponent<Weapon>().isActive = false; 
                     }
                     else
                     {
