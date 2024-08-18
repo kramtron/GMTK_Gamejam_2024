@@ -8,7 +8,8 @@ public class hitEnemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<BasicEnemy>().Kill();
+            collision.gameObject.GetComponentInParent<BasicEnemy>().Kill();
+
         }
     }
 }
