@@ -29,7 +29,8 @@ public class BasicEnemy : MonoBehaviour
     private bool isMovingToNextPoint;
 
     [SerializeField] GameObject blood;
-    public bool kill = false;
+    
+    [SerializeField] GameObject wanderingCone;
 
     enum EnemyState
     {
@@ -62,11 +63,7 @@ public class BasicEnemy : MonoBehaviour
         UpdateState();
 
         //Quitar. Esto es solo para testing
-        if (kill)
-        {
-            Kill();
-        }
-
+        
     }
 
     private void UpdateRotation()
@@ -104,7 +101,7 @@ public class BasicEnemy : MonoBehaviour
                 break;
             case EnemyState.attacking:
                 agent.SetDestination(target.position);
-
+                wanderingCone.SetActive(false);
 
                 // Comprueba si el agente se ha detenido
                 if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
@@ -147,7 +144,7 @@ public class BasicEnemy : MonoBehaviour
 
     }
 
-    private void Kill()
+    public void Kill()
     {
         Instantiate(blood, transform.position, Quaternion.identity);
         Destroy(gameObject);
