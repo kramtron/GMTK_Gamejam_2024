@@ -380,6 +380,9 @@ MonoBehaviour:
   grabbableMask:
     serializedVersion: 2
     m_Bits: 64
+  notGrabbableMask:
+    serializedVersion: 2
+    m_Bits: 128
   hitCollider: {fileID: 5797659322394645257}
   armsAnimator: {fileID: 4759500078578372379}
   headAnimator: {fileID: 2361905617962150395}

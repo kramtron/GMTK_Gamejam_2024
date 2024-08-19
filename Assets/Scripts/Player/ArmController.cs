@@ -18,6 +18,7 @@ public class ArmController : MonoBehaviour
 {
 
     [SerializeField] LayerMask grabbableMask;
+    [SerializeField] LayerMask notGrabbableMask;
     [SerializeField] GameObject hitCollider;
     [SerializeField] Animator armsAnimator;
     [SerializeField] Animator headAnimator;
@@ -165,6 +166,11 @@ public class ArmController : MonoBehaviour
                 originalPosition = playerTransform.localPosition;
                 currentState = ArmState.Waiting;
             }
+        }
+        else if(((1 << collision.gameObject.layer) & notGrabbableMask) != 0)
+        {
+            StopStretching();
+            currentState = ArmState.Idle;
         }
     }
 
