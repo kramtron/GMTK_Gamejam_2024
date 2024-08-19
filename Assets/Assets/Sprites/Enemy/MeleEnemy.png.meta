@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e349b9d2eaf2b454099de7ec2d4a1e11
+guid: 2bbff1627c9a1f446bb01ca1413081bc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,11 +97,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_0
+      name: MeleEnemy_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -111,18 +111,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6de480f62037c4e9ee55b7e15e51b2
-      internalID: -2005033540
+      spriteID: 0df26772656506f4f9a9d7d6e29b242e
+      internalID: -2023421453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_1
+      name: MeleEnemy_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -132,18 +132,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ab19817f899bec43a2aef2fb93035ee
-      internalID: 1224948845
+      spriteID: 0ec6c668c25199f4c811362642cb3121
+      internalID: -1662976460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_2
+      name: MeleEnemy_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -153,18 +153,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd6be14dfdd77914880bf6f48af666de
-      internalID: -1898588421
+      spriteID: f26df2d24c7802b44b045f30dd1de5cc
+      internalID: -471693346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_3
+      name: MeleEnemy_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -174,17 +174,38 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11d9e7ecf936f524dad3c5b4e5ba5850
-      internalID: -911241515
+      spriteID: e51335363646c9f49b6d2a08dc8b3a68
+      internalID: 2141350837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_4
+      name: MeleEnemy_4
       rect:
         serializedVersion: 2
         x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26fb9ad7a855d547b994a21eef15c83
+      internalID: -1510171453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleEnemy_5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -195,14 +216,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e0e7925967af1143a8017aa3a2fb30d
-      internalID: 549895360
+      spriteID: 1bdd7cd84c1160b4f88843697f920290
+      internalID: 392484245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_5
+      name: MeleEnemy_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9953df648074d5441a600016cd4a0a2e
+      internalID: 1501154548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleEnemy_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05c3306d10dcd24ca337033123ea8e4
+      internalID: 401278604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleEnemy_8
       rect:
         serializedVersion: 2
         x: 0
@@ -216,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a99c0d46acd3804fb1c7464c8d43738
-      internalID: 619800642
+      spriteID: eb6c755e166051441a3638c0a7a3d423
+      internalID: 876816520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_6
+      name: MeleEnemy_9
       rect:
         serializedVersion: 2
         x: 64
@@ -237,14 +300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 200dc45429e50f9489475064bc194b20
-      internalID: 292168059
+      spriteID: baf248f567b9f584797039013829d07c
+      internalID: -705601815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MeleEnemySpriteSheet_7
+      name: MeleEnemy_10
       rect:
         serializedVersion: 2
         x: 128
@@ -258,8 +321,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee23b4a744c60f469ea0f6deed356b7
-      internalID: -232453019
+      spriteID: 88fa3b822e08a8b47acc49138e5855bd
+      internalID: 2027311241
       vertices: []
       indices: 
       edges: []
@@ -275,14 +338,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MeleEnemySpriteSheet_0: -2005033540
-      MeleEnemySpriteSheet_1: 1224948845
-      MeleEnemySpriteSheet_2: -1898588421
-      MeleEnemySpriteSheet_3: -911241515
-      MeleEnemySpriteSheet_4: 549895360
-      MeleEnemySpriteSheet_5: 619800642
-      MeleEnemySpriteSheet_6: 292168059
-      MeleEnemySpriteSheet_7: -232453019
+      MeleEnemy_0: -2023421453
+      MeleEnemy_1: -1662976460
+      MeleEnemy_10: 2027311241
+      MeleEnemy_2: -471693346
+      MeleEnemy_3: 2141350837
+      MeleEnemy_4: -1510171453
+      MeleEnemy_5: 392484245
+      MeleEnemy_6: 1501154548
+      MeleEnemy_7: 401278604
+      MeleEnemy_8: 876816520
+      MeleEnemy_9: -705601815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

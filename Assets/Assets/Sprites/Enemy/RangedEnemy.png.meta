@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fd6e3845b9749624bb38bb754a9a1640
+guid: 2ec3aac728701ec478286ae10c55c49b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,11 +97,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_0
+      name: RangedEnemy_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -111,18 +111,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3492759796e7b349a27a83bdf25db15
-      internalID: 1975713262
+      spriteID: 87d0a37c36038be4ba468589044aae8a
+      internalID: 393959492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_1
+      name: RangedEnemy_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -132,18 +132,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 813c83d09a1ca214fa83718112d0dd1d
-      internalID: -1196695317
+      spriteID: 5db345f471bca994f9fbbbf749511a45
+      internalID: 1877961417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_2
+      name: RangedEnemy_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -153,18 +153,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1796a49821161784facba2fbbb4331cc
-      internalID: 664859239
+      spriteID: 427d3bfde1e98ca488add33a2e420410
+      internalID: -1967986528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_3
+      name: RangedEnemy_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -174,17 +174,38 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 570a85990c886c947a76957c8b79a1a1
-      internalID: -386328150
+      spriteID: 43c962745d9648045b83c3e52c5d8b02
+      internalID: 449511210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_4
+      name: RangedEnemy_4
       rect:
         serializedVersion: 2
         x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d4798be7451164ba50293c8c834c47
+      internalID: -598006261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy_5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -195,14 +216,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93ff910a58c3acd498feb11312dd77f8
-      internalID: 2105344884
+      spriteID: b243caa04631cf24dbde3dd9e72236fb
+      internalID: 1526373556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_5
+      name: RangedEnemy_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238cf8595138f264394c7dbabf0fd49a
+      internalID: 617742587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da66e3677f7a4e4091563390f87e563
+      internalID: -653920326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy_8
       rect:
         serializedVersion: 2
         x: 0
@@ -216,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3164a5e0ff296664397cfdb4161cc8ec
-      internalID: -1838796834
+      spriteID: 1e795c4537f45774a9594136b9212ad3
+      internalID: -1103508617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_6
+      name: RangedEnemy_9
       rect:
         serializedVersion: 2
         x: 64
@@ -237,14 +300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ee3204109d920541a72343da34442bc
-      internalID: 859034914
+      spriteID: 182268762c990b34db3673f49f180b05
+      internalID: 384470111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RangedEnemySpritesheet_7
+      name: RangedEnemy_10
       rect:
         serializedVersion: 2
         x: 128
@@ -258,8 +321,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0fabf4d6f26b0f42b7a727f3b73aaaf
-      internalID: 125529837
+      spriteID: ddf065ebe9e1b464caa3d6c15f890caf
+      internalID: 354946718
       vertices: []
       indices: 
       edges: []
@@ -275,14 +338,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RangedEnemySpritesheet_0: 1975713262
-      RangedEnemySpritesheet_1: -1196695317
-      RangedEnemySpritesheet_2: 664859239
-      RangedEnemySpritesheet_3: -386328150
-      RangedEnemySpritesheet_4: 2105344884
-      RangedEnemySpritesheet_5: -1838796834
-      RangedEnemySpritesheet_6: 859034914
-      RangedEnemySpritesheet_7: 125529837
+      RangedEnemy_0: 393959492
+      RangedEnemy_1: 1877961417
+      RangedEnemy_10: 354946718
+      RangedEnemy_2: -1967986528
+      RangedEnemy_3: 449511210
+      RangedEnemy_4: -598006261
+      RangedEnemy_5: 1526373556
+      RangedEnemy_6: 617742587
+      RangedEnemy_7: -653920326
+      RangedEnemy_8: -1103508617
+      RangedEnemy_9: 384470111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
