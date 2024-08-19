@@ -26,6 +26,7 @@ public class ArmController : MonoBehaviour
     private InputMapping controls;
     private Transform playerTransform;
     private Transform handsTransform;
+    private GameObject mouseAnimObject;
     [SerializeField] Transform headTransform;
 
 
@@ -69,6 +70,9 @@ public class ArmController : MonoBehaviour
         initialLocalRotation = handsTransform.localRotation;
         initialLocalScale = handsTransform.localScale;
         hitCollider.SetActive(false);
+
+        mouseAnimObject = GameObject.FindGameObjectWithTag("Mouse");
+        mouseAnimObject.SetActive(false);
     }
 
     void Update()
@@ -94,7 +98,7 @@ public class ArmController : MonoBehaviour
 
     void StartStretching()
     {
-        if (!alreadyColliding)
+        if (!alreadyColliding && currentState != ArmState.GapClosing)
         {
             currentState = ArmState.Stretching;
             armsAnimator.SetBool("Attack", true);
@@ -116,6 +120,8 @@ public class ArmController : MonoBehaviour
         if (currentState != ArmState.GapClosing)
         {
             currentState = ArmState.Idle;
+
+            mouseAnimObject.SetActive(false);
         }
     }
     void LaunchTowardsTarget()
@@ -123,6 +129,8 @@ public class ArmController : MonoBehaviour
         if (currentState == ArmState.Waiting)
         {
             currentState = ArmState.GapClosing;
+
+            mouseAnimObject.SetActive(false);
         }
     }
 
@@ -161,10 +169,15 @@ public class ArmController : MonoBehaviour
             {
                 StopStretching();
                 targetPosition = hit.point;
+                Debug.Log(hit.point);
+                Debug.DrawLine(hit.point, targetPosition, Color.blue, 2f);
                 gapClosePosition = handsTransform.position;
                 gapCloseScale = handsTransform.localScale;
                 originalPosition = playerTransform.localPosition;
                 currentState = ArmState.Waiting;
+
+                mouseAnimObject.transform.position = targetPosition;
+                mouseAnimObject.SetActive(true);
             }
         }
         else if(((1 << collision.gameObject.layer) & notGrabbableMask) != 0)
