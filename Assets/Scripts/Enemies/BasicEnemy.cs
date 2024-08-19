@@ -31,6 +31,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] GameObject blood;
     
     [SerializeField] GameObject wanderingCone;
+    private bool firstTime = true;
 
     enum EnemyState
     {
@@ -187,7 +188,13 @@ public class BasicEnemy : MonoBehaviour
     {
         if (!isMovingToNextPoint && agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
         {
-            StartCoroutine(PatrolPause());
+            if (firstTime)
+            {
+                SetNextPatrolPoint();
+
+                firstTime = false;
+            }
+            else StartCoroutine(PatrolPause());
         }
     }
 
