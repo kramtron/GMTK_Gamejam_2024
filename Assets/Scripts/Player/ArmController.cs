@@ -19,22 +19,27 @@ public class ArmController : MonoBehaviour
 
     [SerializeField] LayerMask grabbableMask;
     [SerializeField] GameObject hitCollider;
+    [SerializeField] Animator armsAnimator;
+    [SerializeField] Animator headAnimator;
     [HideInInspector] public ArmState currentState = ArmState.Idle;
     private InputMapping controls;
     private Transform playerTransform;
     private Transform handsTransform;
+    [SerializeField] Transform headTransform;
 
 
     public float stretchSpeed = 5f;
     public float moveSpeed = 10f;
     private bool alreadyColliding = false;
 
-
+    private Vector3 initialLocalPosition;
+    private Quaternion initialLocalRotation;
+    private Vector3 initialLocalScale;
     private Vector3 gapClosePosition;
     private Vector3 gapCloseScale;
-    private Vector3 originalScale;
     private Vector3 originalPosition;
     private Vector3 targetPosition;
+    
 
     void Awake()
     {
@@ -56,10 +61,12 @@ public class ArmController : MonoBehaviour
 
     void Start()
     {
-        originalScale = transform.parent.localScale;
-        originalPosition = transform.parent.localPosition;
-        playerTransform = transform.parent.parent;
         handsTransform = transform.parent;
+        playerTransform = transform.parent.parent;
+
+        initialLocalPosition = handsTransform.localPosition;
+        initialLocalRotation = handsTransform.localRotation;
+        initialLocalScale = handsTransform.localScale;
         hitCollider.SetActive(false);
     }
 
@@ -89,7 +96,18 @@ public class ArmController : MonoBehaviour
         if (!alreadyColliding)
         {
             currentState = ArmState.Stretching;
+            armsAnimator.SetBool("Attack", true);
+            headAnimator.SetBool("Attack", true);
+            StartCoroutine(StopAttackAnim());
         }
+    }
+
+    IEnumerator StopAttackAnim()
+    {
+        yield return new WaitForSeconds(0.1f);
+        armsAnimator.SetBool("Attack", false);
+        headAnimator.SetBool("Attack", false);
+        yield break;
     }
 
     void StopStretching()
@@ -97,10 +115,6 @@ public class ArmController : MonoBehaviour
         if (currentState != ArmState.GapClosing)
         {
             currentState = ArmState.Idle;
-        }
-        else
-        {
-            currentState = ArmState.Waiting;
         }
     }
     void LaunchTowardsTarget()
@@ -131,6 +145,7 @@ public class ArmController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         handsTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        headTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         MaintainArms();
     }
@@ -170,9 +185,10 @@ public class ArmController : MonoBehaviour
     }
     public void ResetArm()
     {
-        handsTransform.localScale = originalScale;
-        handsTransform.localPosition = Vector3.zero;
-        handsTransform.localRotation = Quaternion.identity;
+        handsTransform.localPosition = initialLocalPosition;
+        handsTransform.localRotation = initialLocalRotation;
+        handsTransform.localScale = initialLocalScale;
+        headTransform.localRotation = Quaternion.identity;
         hitCollider.SetActive(false);
     }
 

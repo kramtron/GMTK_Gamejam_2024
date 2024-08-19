@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 037971139f1cbc548af5e85337f333d5
+guid: c14fd5ef934df7d448829b899d3926d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: head_idle_0
+      name: arms_idle2_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 23
-        width: 19
-        height: 18
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7a851ed583b0244804e77584256d7a
-      internalID: -1651800732
+      spriteID: ce84c81e561077646b97d55d5a03aef2
+      internalID: -1743105934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: head_idle_1
+      name: arms_idle2_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 23
-        width: 19
-        height: 18
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2bec6b9071546546b4aa6967286c71f
-      internalID: -1496157749
+      spriteID: 4490cd3e0b66230479b80f6d8b6880b4
+      internalID: 1782657855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: head_idle_2
+      name: arms_idle2_2
       rect:
         serializedVersion: 2
-        x: 150
-        y: 23
-        width: 19
-        height: 18
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6d3aa43291be50458fd231c273d5d57
-      internalID: 1792766853
+      spriteID: 0c5162d1333c6b7469a4659a884e89ab
+      internalID: -143414459
       vertices: []
       indices: 
       edges: []
@@ -170,9 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      head_idle_0: -1651800732
-      head_idle_1: -1496157749
-      head_idle_2: 1792766853
+      arms_idle2_0: -1743105934
+      arms_idle2_1: 1782657855
+      arms_idle2_2: -143414459
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

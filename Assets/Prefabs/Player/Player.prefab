@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5530187187245525266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.141, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -182,6 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8837648144198707829}
   - component: {fileID: 8043852435898005082}
+  - component: {fileID: 2361905617962150395}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -245,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b6e781fe1a04bdb4dbd6c96425daaa33, type: 3}
+  m_Sprite: {fileID: -1651800732, guid: 037971139f1cbc548af5e85337f333d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -256,6 +257,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2361905617962150395
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965084508034104305}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c47cf149e12d28449806006f7744007, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8910344157326260114
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +290,7 @@ GameObject:
   - component: {fileID: 6706001352705898660}
   - component: {fileID: 8694887552315589160}
   - component: {fileID: 1472824637258456006}
+  - component: {fileID: 4759500078578372379}
   m_Layer: 0
   m_Name: Hands
   m_TagString: Untagged
@@ -284,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 8910344157326260114}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0, z: 0}
+  m_LocalPosition: {x: 0.141, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -331,7 +354,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bc36346b5ace82145b76e79b42d86b74, type: 3}
+  m_Sprite: {fileID: 1596508554, guid: 01c09be1036395146a5e34bfbd40cfe2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -358,7 +381,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hitCollider: {fileID: 5797659322394645257}
+  armsAnimator: {fileID: 4759500078578372379}
+  headAnimator: {fileID: 2361905617962150395}
   currentState: 0
+  headTransform: {fileID: 8837648144198707829}
   stretchSpeed: 50
   moveSpeed: 50
 --- !u!61 &1472824637258456006
@@ -397,7 +423,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.34, y: 0.34}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -406,6 +432,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34, y: 0.04}
   m_EdgeRadius: 0
+--- !u!95 &4759500078578372379
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910344157326260114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae349a9cba6193042acdbbe4445aa7bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4574033563202707152
 PrefabInstance:
   m_ObjectHideFlags: 0
