@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4671854556176923374}
   m_Father: {fileID: 0}
@@ -269,7 +269,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.05
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -288,7 +288,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.13653493
-        value: 0.051730715
+        value: 0.10345801
         inSlope: 0
         outSlope: 0
         tangentMode: 0
