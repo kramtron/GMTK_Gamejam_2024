@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7939738058549259150}
   - component: {fileID: 879719824975400630}
   - component: {fileID: 529106681804619462}
-  - component: {fileID: 3737502178780065242}
+  - component: {fileID: 4284036569606318853}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -160,7 +160,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &3737502178780065242
+--- !u!114 &4284036569606318853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,11 +169,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5782835234309633118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d840e3cd5d6ab1a48ba02ddce723e16d, type: 3}
+  m_Script: {fileID: 11500000, guid: 43b74f0732e4e7542a16be176f1fc72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 6387444705545974959, guid: 197b81b4d91dcd24c91e43be3b961159, type: 3}
-  waitTime: 0.8
 --- !u!1 &7965084508034104305
 GameObject:
   m_ObjectHideFlags: 0

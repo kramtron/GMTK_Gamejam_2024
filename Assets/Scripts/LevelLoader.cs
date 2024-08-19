@@ -7,28 +7,64 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] string sceneToLoad;
-    public Animator transition;
     public float transitionTime = 1;
 
-    public void LoadNextLevel()
+    private int levelIndex = -1;
+
+    //
+    // Summary:
+    //     Call start coroutine RunLoadLevel(string)
+    //
+    // Parameters:
+    //   name:
+    //     Name of the scene to load
+    public void LoadLevel(string name)
     {
-        StartCoroutine(LoadLevel(sceneToLoad));
+        sceneToLoad = name;
+        StartCoroutine(RunLoadLevel());
     }
 
-    IEnumerator LoadLevel(string name)
+    //
+    // Summary:
+    //     Call start coroutine RunLoadLevel(int)
+    //
+    // Parameters:
+    //   index:
+    //     Index of the scene to load
+    public void LoadLevel(int index)
     {
-        // Play animation, calling the start trigger
-        transition.SetTrigger("Start");
-        // Wait X amount of time
+        levelIndex = index;
+        StartCoroutine(RunLoadLevel());
+    }
+
+    //
+    // Summary:
+    //     IEnumerator that calls the StarAnim method from the AnimFade object,
+    //     and loads the scene
+    //
+    IEnumerator RunLoadLevel()
+    {
+        // Start anim fade
+        FindObjectOfType<AnimFade>().StartAnim();
+        // Wait X amount of time before load scene
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(name, LoadSceneMode.Single);
-
+        
+        // Check if load scene using index or name
+        if (levelIndex != -1)
+        {
+            SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            LoadNextLevel();
+            StartCoroutine(RunLoadLevel());
         }
     }
 

@@ -22,7 +22,7 @@ public class BulletController : MonoBehaviour
         Debug.Log("BulletDestroyed");
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerDeath>().Kill();
+            collision.gameObject.GetComponent<PlayerGetDmg>().Hit();
         }
         Destroy(gameObject);
     }
