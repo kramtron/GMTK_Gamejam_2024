@@ -18,7 +18,7 @@ public class MeleWeapon : MonoBehaviour
 
             //Hacer daño al jugador con funcion OnHit.ç
             if (player != null) {
-                player.GetComponentInParent<PlayerDeath>().Kill();
+                player.GetComponentInParent<PlayerGetDmg>().Hit();
                 //player = null;
             }
             //Debug.Log("Atacaaaaaad");

@@ -6,22 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
-
-    [SerializeField] GameObject blood;
     [SerializeField] float waitTime;
 
-    public void Kill()
-    {
-        Instantiate(blood, transform.position, Quaternion.identity);
+    public void PlayerDie(GameObject player) {
+        Destroy(player);
         StartCoroutine(WaitDeath());
-        
     }
-
 
     private IEnumerator WaitDeath() {
         yield return new WaitForSeconds(waitTime);
-        Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FindObjectOfType<LevelLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
