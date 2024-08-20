@@ -33,6 +33,9 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] GameObject wanderingCone;
     private bool firstTime = true;
 
+
+
+    [SerializeField] Animator animator;
     enum EnemyState
     {
         wandering,
@@ -109,6 +112,9 @@ public class BasicEnemy : MonoBehaviour
                     // Comprueba si el agente se ha detenido
                     if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
                     {
+                        animator.SetBool("Walking", false);
+                        animator.SetBool("Attacking",true);
+
                         if (!agent.isStopped)
                         {
                             StopEnemy(); // Detiene el movimiento del enemigo
@@ -125,9 +131,15 @@ public class BasicEnemy : MonoBehaviour
                     }
                     else
                     {
+                        animator.SetBool("Attacking", false);
+
+                        animator.SetBool("Walking", true);
+
+
                         if (agent.isStopped)
                         {
                             MoveEnemy(); // Reactiva el movimiento del enemigo
+
                         }
 
                         if (!isMelee)
@@ -180,11 +192,13 @@ public class BasicEnemy : MonoBehaviour
     private void StopEnemy()
     {
         agent.isStopped = true;
+
     }
 
     private void MoveEnemy()
     {
-        agent.isStopped = false;    
+        agent.isStopped = false;
+
     }
 
     private void Wander()
@@ -203,8 +217,13 @@ public class BasicEnemy : MonoBehaviour
 
     private IEnumerator PatrolPause()
     {
+        animator.SetBool("Walking", false);
+
+        animator.SetBool("Wandering", true);
         isMovingToNextPoint = true; // Evita que el enemigo intente moverse mientras está en pausa
         yield return new WaitForSeconds(patrolPauseDuration);
+        animator.SetBool("Wandering", false);
+
         SetNextPatrolPoint();
         isMovingToNextPoint = false; // Permite al enemigo moverse de nuevo
     }
@@ -212,6 +231,7 @@ public class BasicEnemy : MonoBehaviour
     private void SetNextPatrolPoint()
     {
         if (patrolPoints.Count == 0) return;
+        animator.SetBool("Walking", true);
 
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
         agent.SetDestination(patrolPoints[currentPatrolIndex].position);

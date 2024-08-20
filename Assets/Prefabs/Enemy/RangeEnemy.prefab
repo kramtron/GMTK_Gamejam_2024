@@ -404,6 +404,7 @@ MonoBehaviour:
   patrolPauseDuration: 2
   blood: {fileID: 6387444705545974959, guid: 197b81b4d91dcd24c91e43be3b961159, type: 3}
   wanderingCone: {fileID: 952968974321406049}
+  animator: {fileID: 3902541726043675148}
 --- !u!50 &581867177956115560
 Rigidbody2D:
   serializedVersion: 4
@@ -552,7 +553,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 850791616, guid: f9ed3d77e9740e04fb18b7df2a1a8e26, type: 3}
-  m_Color: {r: 1, g: 0.1273585, b: 0.1273585, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
