@@ -98,7 +98,12 @@ public class MainMenuController : MonoBehaviour
 
     public void LevelSelector(string sceneName)
     {
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1.0f;
 
+        }
         SceneManager.LoadScene(sceneName);
 
     }
