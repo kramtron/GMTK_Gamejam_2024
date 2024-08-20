@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -41,6 +42,8 @@ public class ArmController : MonoBehaviour
     private Vector3 gapCloseScale;
     private Vector3 originalPosition;
     private Vector3 targetPosition;
+
+    public UnityEvent OnImpact;
     
 
     void Awake()
@@ -220,6 +223,7 @@ public class ArmController : MonoBehaviour
 
         if (distance < 0.1f)
         {
+            OnImpact.Invoke();
             currentState = ArmState.Idle;
             ResetArm();
         }
