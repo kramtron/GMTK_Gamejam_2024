@@ -3370,6 +3370,10 @@ PrefabInstance:
       propertyPath: OnImpact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1905210437}
+    - target: {fileID: 8694887552315589160, guid: f515ac3dc51a9b341b05810b9beb7d62, type: 3}
+      propertyPath: OnImpact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Shake
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5435858391160664506, guid: f515ac3dc51a9b341b05810b9beb7d62, type: 3}
