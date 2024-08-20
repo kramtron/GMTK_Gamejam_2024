@@ -29,7 +29,7 @@ public class PlayerAim : MonoBehaviour
 
     void Update()
     {
-        if (armController.currentState != ArmState.Waiting)
+        if (armController.currentState != ArmState.Waiting && armController.currentState != ArmState.GapClosing)
         {
             Aim();
         }

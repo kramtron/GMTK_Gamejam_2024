@@ -101,40 +101,43 @@ public class BasicEnemy : MonoBehaviour
 
                 break;
             case EnemyState.attacking:
-                agent.SetDestination(target.position);
-                wanderingCone.SetActive(false);
-
-                // Comprueba si el agente se ha detenido
-                if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+                if (target != null)
                 {
-                    if (!agent.isStopped)
-                    {
-                        StopEnemy(); // Detiene el movimiento del enemigo
-                    }
+                    agent.SetDestination(target.position);
+                    wanderingCone.SetActive(false);
 
-                    if (!isMelee)
+                    // Comprueba si el agente se ha detenido
+                    if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
                     {
-                        weapon.GetComponent<Weapon>().isActive = true; // Activa el arma
+                        if (!agent.isStopped)
+                        {
+                            StopEnemy(); // Detiene el movimiento del enemigo
+                        }
+
+                        if (!isMelee)
+                        {
+                            weapon.GetComponent<Weapon>().isActive = true; // Activa el arma
+                        }
+                        else
+                        {
+                            weapon.GetComponent<MeleWeapon>().isActive = true;
+                        }
                     }
                     else
                     {
-                        weapon.GetComponent<MeleWeapon>().isActive = true;
-                    }
-                }
-                else
-                {
-                    if (agent.isStopped)
-                    {
-                        MoveEnemy(); // Reactiva el movimiento del enemigo
-                    }
+                        if (agent.isStopped)
+                        {
+                            MoveEnemy(); // Reactiva el movimiento del enemigo
+                        }
 
-                    if (!isMelee)
-                    {
-                        weapon.GetComponent<Weapon>().isActive = false; 
-                    }
-                    else
-                    {
-                        weapon.GetComponent<MeleWeapon>().isActive = false;
+                        if (!isMelee)
+                        {
+                            weapon.GetComponent<Weapon>().isActive = false;
+                        }
+                        else
+                        {
+                            weapon.GetComponent<MeleWeapon>().isActive = false;
+                        }
                     }
                 }
                 break;
